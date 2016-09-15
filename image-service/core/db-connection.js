@@ -1,7 +1,7 @@
 var db = require('mysql');
 
 var connection = db.createConnection({
-	host: 'localhost',
+	host: 'db',
 	user: 'imageapp',
 	password: 'imageapp',
 	database: 'image_app'

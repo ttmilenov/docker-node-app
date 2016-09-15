@@ -21,6 +21,7 @@ Usage:
 USAGE
     exit 1
 }
+
 wait_for()
 {
     if [[ $TIMEOUT -gt 0 ]]; then
@@ -42,6 +43,7 @@ wait_for()
     done
     return $result
 }
+
 wait_for_wrapper()
 {
     # In order to support SIGINT during timeout: http://unix.stackexchange.com/a/57692
@@ -59,6 +61,7 @@ wait_for_wrapper()
     fi
     return $RESULT
 }
+
 # process arguments
 while [[ $# -gt 0 ]]
 do
@@ -122,14 +125,17 @@ do
         ;;
     esac
 done
+
 if [[ "$HOST" == "" || "$PORT" == "" ]]; then
     echoerr "Error: you need to provide a host and port to test."
     usage
 fi
+
 TIMEOUT=${TIMEOUT:-15}
 STRICT=${STRICT:-0}
 CHILD=${CHILD:-0}
 QUIET=${QUIET:-0}
+
 if [[ $CHILD -gt 0 ]]; then
     wait_for
     RESULT=$?
@@ -143,6 +149,7 @@ else
         RESULT=$?
     fi
 fi
+
 if [[ $CLI != "" ]]; then
     if [[ $RESULT -ne 0 && $STRICT -eq 1 ]]; then
         echoerr "$cmdname: strict mode, refusing to execute subprocess"
