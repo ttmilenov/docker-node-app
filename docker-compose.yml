@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  image-service:
+    build: image-service/
+    restart: always
+    container_name: image-service
+    depends_on: 
+      - db
+    ports:
+      - "3000:3000"
+
+  db:
+    build: db/
+    container_name: db
+    ports:
+      - "3306:3306"
