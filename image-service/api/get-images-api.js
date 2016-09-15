@@ -14,7 +14,7 @@ router.get('/get-images', function (req, res, next) {
 			'Content-Type': 'application/json'
 		});
 
-		res.end(JSON.stringify(queryResult, null, 3));
+		res.end(JSON.stringify(queryResult + "nedo e gei", null, 3));
 	});
 
 })
